@@ -51,13 +51,13 @@ try {
     val latStr = line( 7 )
 
     var index = 8
-    var measurements: List[Double] = List[Double]() 
+    var measurements: List[Double] = List[Double]()
     while ( index < 18 ) {
       val num = if( line( index ) == "" ) { 0.0 } else { line( index ).toDouble }
       index += 1
       measurements = num :: measurements
-    } 
-  
+    }
+
     if( lonStr != "" && latStr != "" ) {
       val lon = lonStr.toDouble
       val lat = latStr.toDouble
@@ -67,7 +67,7 @@ try {
       val specId = getSpecId( spec, sex, year, measurements, userId )
 
       if( locId > 0 && specId > 0 ) {
-        val query = 
+        val query =
         String.format( """INSERT INTO gis.geom
         (locid,specid,userid,geom)
         VALUES
@@ -94,8 +94,8 @@ try {
 
 def getLocId( name: String, county: String, state: String, country: String, userId: Long ): Long = {
   getId(
-    String.format( 
-			"""SELECT locId FROM gis.location 
+    String.format(
+			"""SELECT locId FROM gis.location
 			WHERE name='%s' AND county='%s' AND state='%s' AND country='%s'""", name, county, state, country ),
     String.format(
         """INSERT INTO gis.location

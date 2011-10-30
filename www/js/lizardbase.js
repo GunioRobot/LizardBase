@@ -127,7 +127,7 @@ function makeMap() {
 		}
 
     if( gisYearFrom.value != null && gisYearFrom.value != "" ) {
-			cql_filter_query = cql_filter_query + " AND year > " + gisYearFrom.value 
+			cql_filter_query = cql_filter_query + " AND year > " + gisYearFrom.value
     }
 
     if( gisYearTo.value != null && gisYearTo.value != "" ) {
@@ -160,13 +160,13 @@ function makeMap() {
     map.addLayers([gphy, gmap, ghyb, gsat, lizardBase]);
 
     info = new OpenLayers.Control.WMSGetFeatureInfo({
-        url: 'http://ec2-174-129-239-85.compute-1.amazonaws.com/geoserver/wms?service=wms', 
+        url: 'http://ec2-174-129-239-85.compute-1.amazonaws.com/geoserver/wms?service=wms',
         title: 'Anole Specimen',
         queryVisible: true,
         eventListeners: {
             getfeatureinfo: function(event) {
                 map.addPopup(new OpenLayers.Popup.FramedCloud(
-                    "anoleLoc", 
+                    "anoleLoc",
                     map.getLonLatFromPixel(event.xy),
                     null,
                     event.text,
